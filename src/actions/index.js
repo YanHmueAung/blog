@@ -4,7 +4,8 @@ import _ from 'lodash';
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
 
-    _.map(getState().posts, 'userId')
+    const userIds = _.uniq(_.map(getState().posts, 'userId'))
+    console.log(userIds);
 }
 
 export const fetchPosts = () => async (dispatch, getState) => {
